@@ -1,25 +1,27 @@
-var $noteList = $("#noteList");
+
 var $noteShow = $("#noteShow");
 var $newDisplay = $("#newDisplay");
 
 
-var runNoteQuery = () => {
+const runNoteQuery = () => {
   $.ajax({
     url: "/api/notes",
     method: "GET"
   }).then((noteData) => {
     console.log(noteData)
     for (var i = 0; i < noteData.length; i++) {
-      var $listItem = $("<li class='list-group-item mt-4>");
-
+      var $listItem = $("<div class='card mt-4'>");
+      console.log(noteData[i])
+      var $noteList = $("<ul>");
       $noteList.append(
-        $("<h1>").text(noteData[i].title),
-        $("<h3>").text(noteData[i].body),
-        $("<h4>").text(noteData[i].created_at)
+        $("<h2>").text(noteData[i].title),
+        $("<p>").text(noteData[i].body),
+        $("<p>").text(noteData[i].created_at)
       );
-      var $newNotes = $noteList.append($listItem);
-      $newNotes.append($newDisplay);
+      $listItem.append($noteList);
+      $newDisplay.append($listItem);
     };
+    
   });
 };
 
