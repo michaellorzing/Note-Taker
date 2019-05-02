@@ -1,0 +1,17 @@
+.jumbotron  {
+  background-color: #0D329E;
+  color: white;
+  padding: 30px;
+}
+
+.card {
+  width: 450px;
+}
+
+#newDiplay  {
+  width: 650px;
+}
+
+#welcome  {
+  width: 400px;
+}
